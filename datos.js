@@ -4,6 +4,11 @@
    Las categorías marcadas con (*) son el complemento calculado hasta 100%.
    Si tienen el desglose exacto de cada ítem, reemplácenlo aquí.
    ===================================================================== */
+/* Enlace público de la presentación para el código QR.
+   Déjelo vacío ("") y el QR usará automáticamente la dirección donde esté publicada.
+   Si lo desea, escriba aquí el enlace exacto, por ejemplo "https://mi-tesina.netlify.app". */
+const ENLACE_PUBLICO = "";
+
 const N = 31;
 const ROSE = "#c8566b", GOLD = "#d9a85b", SAGE = "#6fb3a2", REST = "#3a3a46";
 
@@ -59,10 +64,6 @@ SLIDES.push({ nav:"Portada", who:D, html:`
     <div class="tag">Abrir en el móvil</div>
     <div id="qrcode"></div>
     <small>Escanee el código con la cámara para ver la presentación.</small>
-    <div class="qr-row">
-     <input id="qrurl" type="url" placeholder="Pegue aquí el enlace (https://...)">
-     <button id="qrbtn">Generar</button>
-    </div>
     <button class="qr-big" id="qrOpen">Ampliar código QR</button>
    </div>
   </div>
