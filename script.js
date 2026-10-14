@@ -183,13 +183,11 @@
     if (!box) return;
     box.innerHTML = '';
     if (!text) {
-      box.innerHTML = '<div class="qrph">Pegue el enlace<br>para crear el QR</div>';
       return;
     }
     try {
       new QRCode(box, { text, width: px, height: px, correctLevel: (QRCode.CorrectLevel || {}).M });
     } catch (err) {
-      box.innerHTML = '<div class="qrph">No se pudo generar<br>el QR (sin conexión)</div>';
     }
   }
   function currentUrl() { return qrUrl || (isWeb ? location.href.split('#')[0] : ''); }
