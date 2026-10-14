@@ -54,12 +54,15 @@ SLIDES.push({ nav:"Portada", who:D, html:`
    <div class="date rv">Guatemala, octubre de 2026</div>
   </div>
   <div class="cover-side">
-   <div class="hero-logo rv"><img src="logo.png" alt="UMG"></div>
+   <div class="hero-logo rv"><img src="img/logo.png" alt="Sello UMG"></div>
    <div class="qrbox rv">
     <div class="tag">Abrir en el móvil</div>
     <div id="qrcode"></div>
     <small>Escanee el código con la cámara para ver la presentación.</small>
+    <input id="qrurl" placeholder="Pegue aquí el enlace público (https://...)">
+    <button id="qrbtn">Generar QR</button>
    </div>
+  </div>
  </div>`});
 
 /* 2 · Introducción */
