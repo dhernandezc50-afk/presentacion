@@ -60,7 +60,6 @@ SLIDES.push({ nav:"Portada", who:D, html:`
     <div id="qrcode"></div>
     <small>Escanee el código con la cámara para ver la presentación.</small>
    </div>
-  </div>
  </div>`});
 
 /* 2 · Introducción */
