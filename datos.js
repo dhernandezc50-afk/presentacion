@@ -50,7 +50,7 @@ SLIDES.push({ nav:"Portada", who:D, html:`
   <div>
    <div class="uni rv"><b>Universidad Mariano Gálvez de Guatemala</b><br>Facultad de Psicología Industrial</div>
    <div class="tag rv">Defensa de Tesina</div>
-   <h1 class="rv">Dependencia pene en las <em>Relaciones de Pareja</em> de Jóvenes Adultos</h1>
+   <h1 class="rv">Dependencia Emocional en las <em>Relaciones de Pareja</em> de Jóvenes Adultos</h1>
    <ul class="authors rv">
      <li><i></i>Daniela Yaneli Hernández Contreras</li>
      <li><i></i>Astrid Pamela Robles Gómez</li>
