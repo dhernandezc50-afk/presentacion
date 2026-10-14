@@ -32,6 +32,9 @@
   </div>
   <div class="top-right">
     <div class="speaker" id="speaker"></div>
+    <button class="icon-btn" id="btnQR" title="Código QR (tecla Q)" aria-label="Código QR">
+      <svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v2h-2zM14 18h2v2h-2zM18 18h2v2h-2z"/></svg>
+    </button>
     <button class="icon-btn" id="btnMenu" title="Índice (tecla M)" aria-label="Índice">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
@@ -49,6 +52,22 @@
   <div class="ov-head"><h3>Índice de la presentación</h3><button class="icon-btn" id="btnClose" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="ov-grid" id="ovGrid"></div>
 </aside>
+
+<!-- Ventana del código QR -->
+<div id="qrModal" class="qr-modal">
+  <div class="qr-panel">
+    <button class="icon-btn qr-x" id="qrClose" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="tag">Abrir en el móvil</div>
+    <h3>Comparta la presentación</h3>
+    <div id="qrBig"></div>
+    <label for="qrurl2">Enlace de la presentación</label>
+    <div class="qr-row">
+      <input id="qrurl2" type="url" placeholder="https://su-presentacion.netlify.app">
+      <button id="qrbtn2">Generar</button>
+    </div>
+    <small>Pegue aquí el enlace público donde publicó la carpeta. El código QR se actualiza al instante y se recuerda en este navegador.</small>
+  </div>
+</div>
 
 <!-- Navegación -->
 <nav id="nav">

@@ -118,7 +118,8 @@
     else if (k === 'End') go(SLIDES.length - 1);
     else if (k === 'f' || k === 'F') toggleFull();
     else if (k === 'm' || k === 'M') ov.classList.toggle('open');
-    else if (k === 'Escape') closeMenu();
+    else if (k === 'q' || k === 'Q') openQR();
+    else if (k === 'Escape') { closeMenu(); closeQR(); }
   });
 
   let tx = null;
@@ -174,14 +175,48 @@
   })();
 
   /* ---------- Código QR ---------- */
-  function renderQR(url) {
-    const box = document.getElementById('qrcode'); if (!box) return;
-    const isWeb = location.protocol.startsWith('http');
-    const text = url || (isWeb ? location.href.split('#')[0] : '');
-    box.innerHTML = '';
+  let qrUrl = '';
+  try { qrUrl = localStorage.getItem('qrUrl') || ''; } catch (e) {}
+  const isWeb = location.protocol.startsWith('http');
 
+  function drawQR(box, text, px) {
+    if (!box) return;
+    box.innerHTML = '';
+    if (!text) {
+      box.innerHTML = '<div class="qrph">Pegue el enlace<br>para crear el QR</div>';
+      return;
+    }
+    try {
+      new QRCode(box, { text, width: px, height: px, correctLevel: (QRCode.CorrectLevel || {}).M });
+    } catch (err) {
+      box.innerHTML = '<div class="qrph">No se pudo generar<br>el QR (sin conexión)</div>';
+    }
   }
-  $('#qrbtn').onclick = () => renderQR($('#qrurl').value.trim());
+  function currentUrl() { return qrUrl || (isWeb ? location.href.split('#')[0] : ''); }
+  function renderQR() {
+    const u = currentUrl();
+    drawQR(document.getElementById('qrcode'), u, 120);
+    drawQR(document.getElementById('qrBig'), u, 230);
+    ['qrurl', 'qrurl2'].forEach(id => { const i = document.getElementById(id); if (i && document.activeElement !== i) i.value = qrUrl || (isWeb ? currentUrl() : ''); });
+  }
+  function setQR(v) {
+    v = (v || '').trim();
+    if (v && !/^https?:\/\//i.test(v)) v = 'https://' + v;
+    qrUrl = v;
+    try { localStorage.setItem('qrUrl', v); } catch (e) {}
+    renderQR();
+  }
+  const qm = $('#qrModal');
+  const openQR = () => { qm.classList.add('open'); renderQR(); setTimeout(() => $('#qrurl2').focus(), 350); };
+  const closeQR = () => qm.classList.remove('open');
+  $('#btnQR').onclick = openQR;
+  $('#qrClose').onclick = closeQR;
+  qm.addEventListener('click', e => { if (e.target === qm) closeQR(); });
+  $('#qrOpen').onclick = openQR;
+  $('#qrbtn').onclick = () => setQR($('#qrurl').value);
+  $('#qrbtn2').onclick = () => setQR($('#qrurl2').value);
+  [['qrurl', 'qrbtn'], ['qrurl2', 'qrbtn2']].forEach(([i, b]) =>
+    document.getElementById(i).addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById(b).click(); }));
 
   /* ---------- Cronómetro ---------- */
   let t0 = Date.now();

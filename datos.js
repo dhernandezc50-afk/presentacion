@@ -59,8 +59,11 @@ SLIDES.push({ nav:"Portada", who:D, html:`
     <div class="tag">Abrir en el móvil</div>
     <div id="qrcode"></div>
     <small>Escanee el código con la cámara para ver la presentación.</small>
-    <input id="qrurl" placeholder="Pegue aquí el enlace público (https://...)">
-    <button id="qrbtn">Generar QR</button>
+    <div class="qr-row">
+     <input id="qrurl" type="url" placeholder="Pegue aquí el enlace (https://...)">
+     <button id="qrbtn">Generar</button>
+    </div>
+    <button class="qr-big" id="qrOpen">Ampliar código QR</button>
    </div>
   </div>
  </div>`});
