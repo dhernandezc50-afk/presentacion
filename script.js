@@ -179,16 +179,7 @@
     const isWeb = location.protocol.startsWith('http');
     const text = url || (isWeb ? location.href.split('#')[0] : '');
     box.innerHTML = '';
-    if (!text) {
-      box.innerHTML = '<div class="qrph">Publique el archivo<br>y pegue el enlace</div>';
-      return;
-    }
-    try {
-      new QRCode(box, { text, width: 140, height: 140,
-        correctLevel: (QRCode.CorrectLevel || {}).M });
-    } catch (err) {
-      box.innerHTML = '<div class="qrph">No se pudo generar<br>el QR (sin conexión)</div>';
-    }
+
   }
   $('#qrbtn').onclick = () => renderQR($('#qrurl').value.trim());
 
